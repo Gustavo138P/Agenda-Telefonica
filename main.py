@@ -4,11 +4,11 @@ agenda = []
 contador = 0
 
 while True:
-  print('1 = Incluir Contato\n2 = Excluir Contato\n3 = Listar Contatos\n4 = Sair do Programa\n')
+  print('\033[1;33m1 = \033[1;36mIncluir Contato\n\033[1;33m2 = \033[1;36mExcluir Contato\n\033[1;33m3 = \033[1;36mListar Contatos\n\033[1;33m4 = \033[1;36mSair do Programa\033[m\n')
   try:
-    opcao = int(input('Digite a sua opcao:'))
+    opcao = int(input('\033[1;33mDigite a sua opcao:\033[m'))
   except:
-    print('\033[1;31mDigite apenas numeros inteiros!!!\033[m')
+    print('\033[1;31mDigite apenas numeros inteiros!!!\033[m\n')
     continue
   if(opcao == 1):
     agenda.append(b.adicionarContatos())
@@ -17,32 +17,32 @@ while True:
     if (contador != 0):
       i = 1
       for contato in agenda:
-        print(f"Contato {i}\nNome: {contato['nome']}\nNumero: {contato['numero']}")
+        print(f"\033[1;33mContato {i}\033[m\n\033[1;33mNome: \033[1;36m{contato['nome']}\033[m\n\033[1;33mNumero: \033[1;36m{contato['numero']}\033[m")
         print('----------------------------------------------')
         i += 1
-      excluir = input('Digite o nome do contato que vc quer excluir: ')
+      excluir = input('\033[1;33mDigite o nome do contato que vc quer excluir:\033[m ')
       excluir = excluir.title()
       indice = 0
       for contato in agenda:
         if(contato['nome'] == excluir):
-          print(f'\nContato a excluir: {contato["nome"]}')
-          confirmacao = input('Confirmar(s=sim/n=nao): ')
+          print(f'\n\033[1;33mContato a excluir: \033[1;36m{contato["nome"]}')
+          confirmacao = input('\033[1;33mConfirmar(s=sim/n=nao):\033[m ')
           if(confirmacao == 's' or confirmacao == 'S' or confirmacao == 'Sim' or confirmacao == 'sim'):
             agenda.pop(indice)
-            print('\033[1;32mContato excluido com sucesso!!!\033[m')
+            print('\033[1;32mContato excluido com sucesso!!!\033[m\n')
             contador-=1
           else:
             break
         indice += 1
     else:
-      print('\033[1;33mLista Vazia, inclua um novo contato!\033[m')
+      print('\033[1;31mLista Vazia, inclua um novo contato!\033[m\n')
   elif(opcao == 3):
     if(contador != 0):
       b.listarContatos(contador, agenda)
     else:
-      print('\033[1;33mLista Vazia, inclua um novo contato!\033[m')
+      print('\033[1;31mLista Vazia, inclua um novo contato!\033[m\n')
   elif(opcao == 4):
       print('\033[1;31mPrograma Encerrado!\033[m')
       break
   else:
-      print('\033[1;33mOpcao Invalida!\033[m')
+      print('\033[1;31mOpcao Invalida!\033[m\n')
